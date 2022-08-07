@@ -5,6 +5,7 @@ import "./assets/css/global.css";
 import { login, logout } from "./assets/js/near/utils";
 
 export default function App() {
+  /** バイクの情報をフロント側で保持するための配列です */
   const [allBikeInfo, setAllBikeInfo] = useState([]);
   /**
    * bikeInfoオブジェクトを定義します.
@@ -18,20 +19,24 @@ export default function App() {
     return { available: false, in_use: false, inspection: false };
   };
 
+  /** どの画面を描画するのかの状態を定義しています */
   const RenderingStates = {
     SIGN_IN: "sign_in",
     REGISTRATION: "registration",
     HOME: "home",
     TRANSACTION: "transaction",
   };
+  /** useStateを利用して描画する状態を保持します */
   const [renderingState, setRenderingState] = useState(RenderingStates.HOME);
 
+  /** 残高表示する際に利用します */
   const [showBalance, setShowBalance] = useState(false);
   const [balanceInfo, setBalanceInfo] = useState({});
   const initialBalanceInfo = async () => {
     return { account_id: "", balance: 0 };
   };
 
+  /** コントラクト側で定義されている, バイクを使うのに必要なftを保持します */
   const [amountToUseBike, setAmountToUseBike] = useState(0);
 
   const bikeImg = require("./assets/img/bike.png");
