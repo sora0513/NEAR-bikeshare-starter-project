@@ -44,6 +44,7 @@ export default function App() {
   // 初回レンダリング時の処理.
   // サイン後にもブラウザのページがリロードされるので, この内容が実行されます.
   useEffect(() => {
+    /** renderingStateを初期化します */
     const initRenderingState = async () => {
       if (!window.walletConnection.isSignedIn()) {
         setRenderingState(RenderingStates.SIGN_IN);
@@ -53,6 +54,7 @@ export default function App() {
     initRenderingState();
   }, []);
 
+  /** サインアウトボタンを表示に使用します。 */
   const signOutButton = () => {
     return (
       <button className="link" style={{ float: "right" }} onClick={logout}>
@@ -61,6 +63,7 @@ export default function App() {
     );
   };
 
+  /** 登録解除ボタンを表示に使用します。 */
   const unregisterButton = () => {
     return (
       <button className="link" style={{ float: "right" }}>
@@ -69,6 +72,7 @@ export default function App() {
     );
   };
 
+  /** サインイン画面を表示します。 */
   const requireSignIn = () => {
     return (
       <div>
@@ -81,6 +85,7 @@ export default function App() {
     );
   };
 
+  /** 登録画面を表示します。 */
   const requireRegistration = () => {
     return (
       <div>
@@ -99,10 +104,12 @@ export default function App() {
     );
   };
 
+  /** 画面のヘッダー部分の表示に使用します。 */
   const header = () => {
     return <h1>Hello {window.accountId} !</h1>;
   };
 
+  /** トランザクション中の画面を表示します。 */
   const transaction = () => {
     return (
       <div>
@@ -114,6 +121,7 @@ export default function App() {
     );
   };
 
+  /** バイク情報の表示に使用します。 */
   const bikeContents = () => {
     return (
       <div>
@@ -134,6 +142,7 @@ export default function App() {
     );
   };
 
+  /** 残高表示に使用します。 */
   const checkBalance = () => {
     return (
       <div class="balance_content">
@@ -170,6 +179,7 @@ export default function App() {
     );
   };
 
+  /** ftの送信部分の表示に使用します。 */
   const transferFt = () => {
     return (
       <div>
@@ -213,6 +223,7 @@ export default function App() {
     );
   };
 
+  /** ホーム画面を表示します。 */
   const home = () => {
     return (
       <div>
@@ -228,6 +239,7 @@ export default function App() {
     );
   };
 
+  /** renderingStateに適した画面を表示します。 */
   switch (renderingState) {
     case RenderingStates.SIGN_IN:
       return <div>{requireSignIn()}</div>;
