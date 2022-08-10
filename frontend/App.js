@@ -54,7 +54,18 @@ export default function App() {
     initRenderingState();
   }, []);
 
-  /** サインアウトボタンを表示に使用します。 */
+  // サインインしているアカウント情報のurlをログに表示
+  console.log(
+    "see:",
+    `https://explorer.testnet.near.org/accounts/${window.accountId}`
+  );
+  // コントラクトのアカウント情報のurlをログに表示
+  console.log(
+    "see:",
+    `https://explorer.testnet.near.org/accounts/${window.contract.contractId}`
+  );
+
+  /** サインアウトボタンの表示に使用します。 */
   const signOutButton = () => {
     return (
       <button className="link" style={{ float: "right" }} onClick={logout}>
@@ -63,7 +74,7 @@ export default function App() {
     );
   };
 
-  /** 登録解除ボタンを表示に使用します。 */
+  /** 登録解除ボタンの表示に使用します。 */
   const unregisterButton = () => {
     return (
       <button className="link" style={{ float: "right" }}>
