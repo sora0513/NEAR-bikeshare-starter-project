@@ -1,4 +1,4 @@
-# Create your first dApp.
+# Create your NEAR dApp.
 
 このコースを始めるには、下記のステップを実行してください。
 
